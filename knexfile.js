@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './data/recipes.db3'
+      filename: './data/cookbook.db3'
     },
     useNullAsDefault: true,
     migrations: {
@@ -19,6 +19,6 @@ module.exports = {
       afterCreate: (conn, done) => { // Runs after a connection is made to the sqlite engine
         conn.run('PRAGMA foreign_keys = ON', done); // Turn on FK enforcement
       }
-    }
+    },
   }
 };
