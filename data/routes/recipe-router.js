@@ -46,6 +46,21 @@ router.get('/:id/shopping-list', (req, res) => {
     })
 })
 
+router.get('/:id/instructions', (req, res) => {
+  const { id } = req.params;
+  
+  Recipe.getInstructions(id)
+    .then(instructions => {
+      res.status(200).json(instructions)
+    })
+    .catch(err => {
+      res.status(500).json({
+        error: err.message,
+        stack: err.stack
+      })
+    });
+})
+
 router.post('/', (req, res) => {
   const recipeData = req.body;
 

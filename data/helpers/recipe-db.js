@@ -25,10 +25,22 @@ function getShoppingList(recipe_id) {
     .where({ recipe_id })
 }
 
+function getInstructions(recipe_id) {
+
+  return db.select('recipe_name',
+    'recipe_id',
+    'order_number',
+    'step_details')
+    .from('recipes as r')
+    .innerJoin('steps as s', 's.recipe_id', 'r.id')
+    .where({ recipe_id })
+}
+
 
 module.exports = {
   getAllRecipes,
   getAllRecipesById,
   insertRecipe,
-  getShoppingList
+  getShoppingList,
+  getInstructions
 }
